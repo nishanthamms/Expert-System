@@ -7,41 +7,28 @@ start :-sleep(0.4),
 		sleep(0.4),
 		write('*****************************************************************'),nl,
 		sleep(0.2),
-		write("###################||| COURSE ADVISER EXPERT SYSTEM |||#########################"),nl,
+		write("--------------||| COURSE ADVISER EXPERT SYSTEM |||---------------"),nl,
 		sleep(0.4),
 		write('*****************************************************************'),nl,
 		sleep(0.4),
 		write('-----------------------------------------------------------------'),nl,nl,nl,
 		
 		
-        /*write("Hi Tell me your name Please : "),
-        read(Patient),*/
 		
 		
 		interface2.
-		
-		
-       /* hypothesis(Patient,Disease),
-        write(Patient),write(', you '), write(' probably have '),write(Disease),write('.'),undo,
-		nl,nl,nl,
-		sleep(0.7),
-		write('*****************************************************************'),nl,
-		sleep(0.4),
-		write("################||| THANK YOU FOR USE ME |||#####################"),nl,
-		sleep(0.4),
-		write('*****************************************************************'),nl.*/
+		 
         
-        
-	selection(Student,maths) :- verify(Student," are you intetesting for maths (y/n) ?").
-	selection(Student,information_technology) :- verify(Student," are you intetesting for IT (y/n) ?").
-	selection(Student,physics) :- verify(Student," are you intetesting for physics (y/n) ?").
-	selection(Student,engineering_technology) :- verify(Student," are you intetesting for Engineering Technology (y/n) ?").
-	selection(Student,botany) :- verify(Student," are you intetesting for botany (y/n) ?").
-	selection(Student,zoology) :- verify(Student," are you intetesting for zoology (y/n) ?").
-	selection(Student,chemistry) :- verify(Student," are you intetesting for chemistry (y/n) ?").
-	selection(Student,accounting) :- verify(Student," are you intetesting for accounting (y/n) ?").
-	selection(Student,economics) :- verify(Student," are you intetesting for economics (y/n) ?").
-	selection(Student,business_studies) :- verify(Student," are you intetesting for business studies (y/n) ?").
+	selection(Student,maths) :- verify(Student," interesting for Maths (y/n) ?").
+	selection(Student,information_technology) :- verify(Student," interesting for IT (y/n) ?").
+	selection(Student,physics) :- verify(Student," interesting for Physics (y/n) ?").
+	selection(Student,engineering_technology) :- verify(Student," interesting for Engineering Technology (y/n) ?").
+	selection(Student,botany) :- verify(Student," interesting for Botany (y/n) ?").
+	selection(Student,zoology) :- verify(Student," interesting for Zoology (y/n) ?").
+	selection(Student,chemistry) :- verify(Student," interesting for Chemistry (y/n) ?").
+	selection(Student,accounting) :- verify(Student," interesting for Accounting (y/n) ?").
+	selection(Student,economics) :- verify(Student," interesting for Economics (y/n) ?").
+	selection(Student,business_studies) :- verify(Student," interesting for Business Studies (y/n) ?").
     
 	
 
@@ -77,21 +64,16 @@ start :-sleep(0.4),
 		selection(Student,physics),
         selection(Student,chemistry).	
 		
-	hypothesis(_,"I'm Sorry, I couldn't found a suitable course for you...").
+	hypothesis(_,"a course. But I'm Sorry, I couldn't found a suitable course for you...").
 	
     response(Reply) :-
         read(Reply),
         write(Reply),nl.
 		
 ask(Student,Question) :-
-	write(Student),write(', do you'),write(Question),
-	/*read(N),
-	( (N == yes ; N == y)
-      ->
-       assert(yes(Question)) ;
-       assert(no(Question)), fail),*/
+	write(Student),write(', are you'),write(Question),
 	
-	interface(', do you',Student,Question),
+	interface(', are you',Student,Question),
 	write('Loading.'),nl,
 	sleep(1),
 	write('Loading..'),nl,
@@ -125,11 +107,11 @@ st(Student):-
 end :-
 		nl,nl,nl,
 		sleep(0.7),
-		write('*****************************************************************'),nl,
+		write('-----------------------------------------------------------------'),nl,
 		sleep(0.4),
-		write("################||| THANK YOU FOR USE ME |||#####################"),nl,
+		write("****************||| THANK YOU FOR USE ME |||*********************"),nl,
 		sleep(0.4),
-		write('*****************************************************************'),nl.
+		write('-----------------------------------------------------------------'),nl.
 
 interface(X,Y,Z) :-
 	atom_concat(Y,X, FAtom),
@@ -163,7 +145,7 @@ interface2 :-
 	jpl_call(F, toFront, [], _),
 	jpl_call('javax.swing.JOptionPane', showInputDialog, [F,'Hi, Tell me your name please'], N),
 	jpl_call(F, dispose, [], _), 
-	/*write(N),nl,*/
+
 	(	N == @(null)
 		->	write('you cancelled'),interface3('you cancelled. ','Thank you ','for use ','me.'),end,fail
 		;	write("Hi, Tell me your name please: "),write(N),nl,st(N)
@@ -185,7 +167,7 @@ interface3(P,W1,D,W2) :-
 	jpl_call(F, toFront, [], _),
 	jpl_call('javax.swing.JOptionPane', showMessageDialog, [F,W3], N),
 	jpl_call(F, dispose, [], _), 
-	/*write(N),nl,*/
+
 	(	N == @(void)
 		->	write('')
 		;	write("")
